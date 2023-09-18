@@ -51,7 +51,7 @@ Enabling shell completion
 West currently supports shell completion in the following combinations of
 platform and shell:
 
-* Linux: bash
+* Linux: bash, zsh, fish
 * macOS: bash
 * Windows: not available
 
@@ -72,11 +72,31 @@ Next, you need to import :file:`west-completion.bash` into your bash shell.
 
 On Linux, you have the following options:
 
-* Copy :file:`west-completion.bash` to :file:`/etc/bash_completion.d/`.
-* Copy :file:`west-completion.bash` to
-  :file:`/usr/share/bash-completion/completions/`.
-* Copy :file:`west-completion.bash` to a local folder and source it from your
-  :file:`~/.bashrc`.
+.. tabs::
+
+  .. group-tab:: Bash
+
+    * Copy :file:`west-completion.bash` to :file:`/etc/bash_completion.d/`.
+    * Copy :file:`west-completion.bash` to
+      :file:`/usr/share/bash-completion/completions/`.
+    * Copy :file:`west-completion.bash` to a local folder and source it from your
+      :file:`~/.bashrc`.
+
+  .. group-tab:: Zsh
+
+    Run the following command, it may require ``root`` privileges.
+
+    .. code-block:: zsh
+
+      west completion zsh > "${fpath[1]}/_west"
+
+  .. group-tab:: fish
+
+    Run the following command.
+
+    .. code-block:: fish
+
+      west completion fish > $HOME/.config/fish/completions/west.fish
 
 On macOS, you have the following options:
 

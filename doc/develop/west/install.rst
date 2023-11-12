@@ -48,43 +48,41 @@ APIs directly. See :ref:`west-apis` for details.
 Enabling shell completion
 *************************
 
-West currently supports shell completion in the following combinations of
-platform and shell:
+West currently supports shell completion in the following shells:
 
-* Linux: bash, zsh, fish
-* macOS: bash
-* Windows: not available
+* bash
+* zsh
+* fish
 
 In order to enable shell completion, you will need to obtain the corresponding
-completion script and have it sourced every time you enter a new shell session.
-
-To obtain the completion script you can use the ``west completion`` command::
-
-   cd /path/to/zephyr/
-   west completion bash > ~/west-completion.bash
-
-.. note::
-
-   Remember to update your local copy of the completion script using ``west
-   completion`` when you update Zephyr.
-
-Next, you need to import :file:`west-completion.bash` into your bash shell.
-
-On Linux, you have the following options:
+completion script and have it sourced.
+Using the completion scripts:
 
 .. tabs::
 
-  .. group-tab:: Bash
+  .. group-tab:: bash
 
-    * Copy :file:`west-completion.bash` to :file:`/etc/bash_completion.d/`.
-    * Copy :file:`west-completion.bash` to
-      :file:`/usr/share/bash-completion/completions/`.
-    * Copy :file:`west-completion.bash` to a local folder and source it from your
-      :file:`~/.bashrc`.
+    *One-time setup*::
 
-  .. group-tab:: Zsh
+    .. code-block:: bash
 
-    Run the following command, it may require ``root`` privileges.
+      source <(west completion bash)
+
+    *Permanent setup*::
+
+    .. code-block:: bash
+
+      west completion bash > ~/west-completion.bash
+
+  .. group-tab:: zsh
+
+    *One-time setup*::
+
+    .. code-block:: zsh
+
+      source <(west completion zsh)
+
+    *Permanent setup*::
 
     .. code-block:: zsh
 
@@ -92,26 +90,17 @@ On Linux, you have the following options:
 
   .. group-tab:: fish
 
-    Run the following command.
+    *One-time setup*::
+
+    .. code-block:: fish
+
+      west completion fish | source
+
+    *Permanent setup*::
 
     .. code-block:: fish
 
       west completion fish > $HOME/.config/fish/completions/west.fish
-
-On macOS, you have the following options:
-
-* Copy :file:`west-completion.bash` to a local folder and source it from your
-  :file:`~/.bash_profile`
-* Install the ``bash-completion`` package with ``brew``::
-
-    brew install bash-completion
-
-  then source the main bash completion script in your :file:`~/.bash_profile`::
-
-    source /usr/local/etc/profile.d/bash_completion.sh
-
-  and finally copy :file:`west-completion.bash` to
-  :file:`/usr/local/etc/bash_completion.d/`.
 
 .. _PyPI:
    https://pypi.org/project/west/
